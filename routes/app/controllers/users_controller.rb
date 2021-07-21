@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
     def index
+        @test = User.select(:title).joins(:artwork)
+        .where("params[:id] = artworks.artist_id OR params[:id] = artwork_shares.viewer_id")
         @users = User.all
-        render json: @users
+        render json: @test
     end
 
     def create
@@ -38,6 +40,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :email)
+        params.require(:user).permit(:username)
     end
 end
