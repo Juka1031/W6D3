@@ -24,3 +24,8 @@ share1 = ArtworkShare.create!(artwork_id: art1.id, viewer_id: julian.id)
 share2 = ArtworkShare.create!(artwork_id: art1.id, viewer_id: julia.id)
 share3 = ArtworkShare.create!(artwork_id: art2.id, viewer_id: james.id)
 share4 = ArtworkShare.create!(artwork_id: art3.id, viewer_id: james.id)
+
+comment1 = Comment.create!(user_id: james.id, artwork_id: art4.id, body: 'Wow! So good!')
+comment2 = Comment.create!(user_id: james.id, artwork_id: art3.id, body: 'Wow! Kinda good...')
+comment3 = Comment.create!(user_id: julian.id, artwork_id: art1.id, body: 'Oof! So bad!')
+comment4 = Comment.create!(user_id: julia.id, artwork_id: art1.id, body: 'Yeah...it needs work...')

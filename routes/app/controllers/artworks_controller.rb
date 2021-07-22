@@ -5,7 +5,7 @@ class ArtworksController < ApplicationController
 
         if User.exists?(params[:user_id]) #if the user exists
             # @artwork = Artwork.where(artist_id: params[:user_id]) #where = artist_id, params[:id] = artwork.id
-            @artwork = Artwork.left_outer_joins(:artwork_shares).where('artworks.artist_id = ? OR artwork_shares.viewer_id = ?', params[:user_id] , params[:user_id])
+            @artwork = Artwork.left_outer_joins(:artwork_shares).where('artworks.artist_id = ? OR artwork_shares.viewer_id = ?', params[:user_id] , params[:user_id]).distinct
         else #if the user does not exist, display all artworks?
 
             @artwork = Artwork.all

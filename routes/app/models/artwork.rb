@@ -28,6 +28,13 @@ class Artwork < ApplicationRecord
     through: :artwork_shares,
     source: :viewer
 
+    has_many :comments,
+    primary_key: :id,
+    foreign_key: :artwork_id,
+    class_name: :Comment,
+    dependent: :destroy
+
+
     # def self.shared_and_owned
     #     Artwork.left_outer_joins(:artwork_shares).where('artworks.artist_id = ? OR artwork_shares.viewer_id = ?', params[:user_id] , params[:user_id])
     # end

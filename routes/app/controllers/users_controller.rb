@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
     def index
-        # @test = User.select(:title).joins(:artwork)
-        # .where("params[:id] = artworks.artist_id OR params[:id] = artwork_shares.viewer_id")
-        @users = User.all
+        if User.exists?(params[:username])
+            @users = User.where('username ~* ?', params[:username])
+        else
+            @users = User.all
+        end
         render json: @users
     end
 
