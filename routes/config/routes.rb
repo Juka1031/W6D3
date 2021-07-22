@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   end
   resources :artworks, only: [:create, :show, :index, :update, :destroy] do
     resources :comments, only: [:index]
+    member do
+        get 'favorite'
+    end
   end
   resources :artwork_shares, only: [:index, :create, :destroy]
   resources :comments, only: [:create, :index, :destroy]
+  resources :likes, only: [:index, :create, :destroy]
 
   # get '/users', to: 'users#index', as: 'users'
   # get '/users/:id', to: 'users#show', as: 'user'
