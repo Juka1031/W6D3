@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
 
     def index
-        @test = User.select(:title).joins(:artwork)
+        # @test = User.select(:title).joins(:artwork)
         # .where("params[:id] = artworks.artist_id OR params[:id] = artwork_shares.viewer_id")
         @users = User.all
-        render json: @test
+        render json: @users
     end
 
     def create
