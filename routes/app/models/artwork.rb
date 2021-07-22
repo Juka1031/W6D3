@@ -28,5 +28,7 @@ class Artwork < ApplicationRecord
     through: :artwork_shares,
     source: :viewer
 
-
+    # def self.shared_and_owned
+    #     Artwork.left_outer_joins(:artwork_shares).where('artworks.artist_id = ? OR artwork_shares.viewer_id = ?', params[:user_id] , params[:user_id])
+    # end
 end
